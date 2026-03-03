@@ -39,13 +39,14 @@ function M.open_dashboard()
 	local width = 45
 	local height = 10
 	local ui = vim.api.nvim_list_uis()[1]
+
 	local opts = {
 		relative = "editor",
 		width = width,
 		height = height,
-		col = (ui.width / 2) - (width / 2),
-		row = (ui.height / 2) - (height / 2),
-		anchor = "NW",
+		anchor = "NE",
+		col = ui.width - 1,
+		row = 1,
 		style = "minimal",
 		border = "rounded",
 		title = " 🌲 Your Forest 🌲 ",
@@ -53,6 +54,10 @@ function M.open_dashboard()
 	}
 
 	local win = vim.api.nvim_open_win(buf, true, opts)
+
+	-- Add this line to make the window transparent!
+	-- Adjust the number (0-100) to change how see-through it is.
+	vim.api.nvim_set_option_value("winblend", 20, { win = win })
 
 	-- Function to safely update the buffer
 	local function update_buffer()
