@@ -23,7 +23,7 @@ If you get distracted and stop interacting with Neovim, your tree will wither aw
 With [lazy.nvim](https://github.com/folke/lazy.nvim):
 ```lua
 {
-  "your-username/forest.nvim",
+  "vinvolve/forest.nvim",
   config = function()
     require("forest").setup()
   end
