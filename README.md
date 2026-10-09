@@ -5,8 +5,10 @@ A minimalist, gamified focus timer for Neovim, inspired by the Forest app. Plant
 If you get distracted and stop interacting with Neovim, your tree will wither away. Stay focused, and at the end of the week, admire the beautiful forest you've built.
 
 ### Demo
-<video src="./assets/demo.webm" controls="controls" width="600"></video>
-*(Alternatively, you can just click the video file [here](./assets/demo.webm))*
+![demo](./assets/demo.webm)
+
+*(If the video doesn't load in your viewer, here is a screenshot)*
+![demo screenshot](./assets/demo.png)
 
 ## ✨ Features
 - **Zero Dependencies**: Powered by a robust, built-in JSON backend (`~/.local/share/nvim/forest.json`). No external SQLite libraries required!
