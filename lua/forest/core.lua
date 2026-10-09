@@ -1,12 +1,14 @@
 local M = {}
 local config = require("forest.config")
+local db = require("forest.db")
 
 M.state = {
 	timer = nil,
 	focus_seconds = 0,
 	last_activity = os.time(),
+	time_start = 0,
 	is_growing = false,
-	trees_planted = 0,
+	trees_planted = db.get_weekly_trees(),
 }
 
 local function notify(msg)
@@ -21,15 +23,16 @@ end
 
 function M.start()
 	if M.state.is_growing then
-		notify(config.options.icons.growing .. " You are already growing a tree!")
+		notify(config.options.icons.stages[1] .. " You are already growing a tree!")
 		return
 	end
 
 	M.state.focus_seconds = 0
 	M.state.is_growing = true
 	M.state.last_activity = os.time()
+	M.state.time_start = os.time()
 	notify(
-		config.options.icons.growing
+		config.options.icons.stages[1]
 			.. " Seed planted! Focus for "
 			.. config.options.focus_target_minutes
 			.. " minutes."
@@ -65,7 +68,8 @@ function M.success()
 		M.state.timer:close()
 		M.state.timer = nil
 	end
-	M.state.trees_planted = M.state.trees_planted + 1
+	db.add_tree(config.options.focus_target_minutes, M.state.time_start, os.time())
+	M.state.trees_planted = db.get_weekly_trees()
 	notify(config.options.icons.tree .. " Tree fully grown! Total: " .. M.state.trees_planted)
 end
 

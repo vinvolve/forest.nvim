@@ -1,10 +1,10 @@
 local M = {}
 
 M.options = {
-	focus_target_minutes = 5,
+	focus_target_minutes = 1,
 	max_idle_seconds = 100,
 	icons = {
-		growing = "🌱",
+		stages = { "🌰", "🌱", "🌿", "🌲" },
 		tree = "🌳",
 		dead = "🥀",
 	},
