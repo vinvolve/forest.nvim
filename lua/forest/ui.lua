@@ -33,6 +33,9 @@ local function get_dashboard_lines()
 	return lines
 end
 
+-- a function to print number of tree out in 3x3 forest
+--local function insert_forest()
+
 function M.open_dashboard()
 	local buf = vim.api.nvim_create_buf(false, true)
 
@@ -51,6 +54,7 @@ function M.open_dashboard()
 		border = "rounded",
 		title = " 🌲 Your Forest 🌲 ",
 		title_pos = "center",
+		my_forest = "",
 	}
 
 	local win = vim.api.nvim_open_win(buf, true, opts)
